@@ -48,6 +48,10 @@ public abstract class Character {
         else rightHand = item;
     }
 
+    public int getCraft() {
+        return craft;
+    }
+
     // Getters
     public String getName() {
         return name;
