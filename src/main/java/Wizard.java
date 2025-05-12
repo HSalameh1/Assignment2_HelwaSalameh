@@ -9,14 +9,14 @@
  */
 public class Wizard extends Character {
     public Wizard(String name) {
-        super(name, 100, 10, 30); // High craft, low strength
+        super(name, 100, 10, 30);
     }
 
     @Override
     public int attack(Monster monster) {
-        int diceRoll = (int) (Math.random() * 6) + 1; // 1d6
+        int diceRoll = (int) (Math.random() * 6) + 1;
         int totalAttack = getCraft() + diceRoll;
-        if (rightHand != null) totalAttack += rightHand.getCraftBonus();
+        if (getRightHand() != null) totalAttack += getRightHand().getCraftBonus();
         return totalAttack;
     }
 }

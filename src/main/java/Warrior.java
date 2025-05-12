@@ -9,14 +9,14 @@
  */
 public class Warrior extends Character {
     public Warrior(String name) {
-        super(name, 120, 30, 5); // High strength, low craft
+        super(name, 120, 30, 5);
     }
 
     @Override
     public int attack(Monster monster) {
-        int diceRoll = (int) (Math.random() * 6) + 1; // 1d6
+        int diceRoll = (int) (Math.random() * 6) + 1;
         int totalAttack = getStrength() + diceRoll;
-        if (leftHand != null) totalAttack += leftHand.getStrengthBonus();
+        if (getLeftHand() != null) totalAttack += getLeftHand().getStrengthBonus();
         return totalAttack;
     }
 }
