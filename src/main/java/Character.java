@@ -4,6 +4,9 @@
 // For SE 350 Section 630 – Spring 2025
 //--------------------------------------------------------
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Abstract base class for all characters (player + monsters).
  * Manages health, strength, craft, and equipped items.
