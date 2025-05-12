@@ -5,6 +5,7 @@
 //--------------------------------------------------------
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -36,7 +37,25 @@ public abstract class Character {
     }
 
     // Getters
-    public String getName() { return name; }
-    public int getHealth() { return health; }
-    public void takeDamage(int damage) { health -= damage; }
+    public String getName() {
+        return name;
+    }
+    public int getHealth() {
+        return health;
+    }
+    public void takeDamage(int damage) {
+        health -= damage;
+    }
+
+    public void addToInventory(Item item) {
+        inventory.add(item);
+    }
+
+    public void removeFromInventory(Item item) {
+        inventory.remove(item);
+    }
+
+    public List<Item> getInventory() {
+        return Collections.unmodifiableList(inventory);
+    }
 }
