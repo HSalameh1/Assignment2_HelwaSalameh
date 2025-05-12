@@ -44,4 +44,8 @@ public class Monster {
     public int getCraft() {
         return craft;
     }
+
+    public int getHealth() {
+        return health;
+    }
 }
