@@ -4,6 +4,7 @@
 // For SE 350 Section 630 – Spring 2025
 //--------------------------------------------------------
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +30,23 @@ public class Dungeon {
     }
 
     public List<Action> getActions() {
-        // TODO: Implement based on current chamber state
-        return List.of();
+        List<Action> actions = new ArrayList<>();
+        Chamber current = getCurrentChamber();
+
+        // Add movement actions
+        for (Door door : current.getDoors()) {
+            actions.add(new Move(this, door));
+        }
+
+        // Add fight actions for guarded doors
+        current.getDoors().stream()
+                .filter(door -> door.getGuard() != null)
+                .forEach(door -> actions.add(new Fight(this, door.getGuard())));
+
+        // Add item pickup actions
+        current.getItems().forEach(item ->
+                actions.add(new Pick(this, item)));
+
+        return actions;
     }
 }
