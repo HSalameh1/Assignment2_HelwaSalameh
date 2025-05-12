@@ -28,6 +28,18 @@ public abstract class Character {
         this.craft = craft;
     }
 
+    protected Item getLeftHand() {
+        return leftHand;
+    }
+
+    protected Item getRightHand() {
+        return rightHand;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
     public abstract int attack(Monster monster); // To be overridden
 
     // Equip an item to a hand
