@@ -27,6 +27,13 @@ public class Monster {
         health -= damage;
     }
 
+    public int attack(Character target) {
+        int diceRoll = (int) (Math.random() * 6) + 1;
+        int totalAttack = (strength > 0) ? strength + diceRoll : craft + diceRoll;
+        target.takeDamage(totalAttack);
+        return totalAttack;
+    }
+
     // Getters
     public String getName() {
         return name;
