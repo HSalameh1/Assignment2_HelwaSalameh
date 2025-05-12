@@ -29,6 +29,14 @@ public class Dungeon {
         return currentChamber;
     }
 
+    public Character getPlayer() {
+        return player;
+    }
+
+    public void setCurrentChamber(Chamber chamber) {
+        this.currentChamber = chamber;
+    }
+
     public List<Action> getActions() {
         List<Action> actions = new ArrayList<>();
         Chamber current = getCurrentChamber();
