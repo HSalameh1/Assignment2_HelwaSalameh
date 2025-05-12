@@ -25,9 +25,10 @@ public class Fight extends Action {
         player.takeDamage(monsterAttack);
 
         if (monster.isDefeated()) {
-            System.out.println("Defeated " + monster.getName() + "!");
-        } else {
-            System.out.println("Both combatants took damage!");
+            dungeon.getCurrentChamber().getDoors().stream()
+                    .filter(door -> door.getGuard() == monster)
+                    .findFirst()
+                    .ifPresent(Door::removeGuard);
         }
     }
 

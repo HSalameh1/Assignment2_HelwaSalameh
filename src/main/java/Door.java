@@ -41,7 +41,17 @@ public class Door {
         return current == chamber1 ? chamber2 : chamber1;
     }
 
+    public boolean isGuardDefeated() {
+        return guard != null && guard.getHealth() <= 0;
+    }
+
     public void removeGuard() {
-        this.guard = null;
+        if (isGuardDefeated()) {
+            this.guard = null;
+        }
+    }
+
+    public boolean isUnlocked() {
+        return guard == null || isGuardDefeated();
     }
 }

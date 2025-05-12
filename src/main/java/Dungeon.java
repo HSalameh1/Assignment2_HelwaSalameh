@@ -41,17 +41,19 @@ public class Dungeon {
         List<Action> actions = new ArrayList<>();
         Chamber current = getCurrentChamber();
 
-        // Add movement actions
+        // Movement (only for unlocked doors)
         for (Door door : current.getDoors()) {
-            actions.add(new Move(this, door));
+            if (door.isUnlocked()) {
+                actions.add(new Move(this, door));
+            }
         }
 
-        // Add fight actions for guarded doors
+        // Combat (only for alive monsters)
         current.getDoors().stream()
-                .filter(door -> door.getGuard() != null)
+                .filter(door -> door.getGuard() != null && !door.isUnlocked())
                 .forEach(door -> actions.add(new Fight(this, door.getGuard())));
 
-        // Add item pickup actions
+        // Item pickup
         current.getItems().forEach(item ->
                 actions.add(new Pick(this, item)));
 
